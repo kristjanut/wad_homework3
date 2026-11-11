@@ -1,9 +1,12 @@
+<script setup>
+import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <Header />
   <router-view/>
+  <Footer/>
 </template>
 
 <style>
@@ -13,6 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-bottom: 100px;
 }
 
 nav {
