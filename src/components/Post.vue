@@ -15,6 +15,14 @@
                     alt="Photo from my post"
                     class="post-image" v-if="post.image != null">
             </div>
+
+            <button class="like-button" v-on:click="IncrementLike(post.id)">
+                <img src="/res/images/likeimage.png" class="post-like">
+            </button>
+
+            <div class="likes_text">
+            {{post.likes}}
+            </div>
         </div>
     </article>
 </template>
@@ -27,7 +35,13 @@ export default {
             type: Object,
             required: true
         }
+    },
+    methods: {
+        IncrementLike (postId) {
+            this.$store.commit('IncrementLike', postId)
     }
+}
+
 }
 </script>
 
@@ -81,6 +95,8 @@ export default {
     width: 25px;
     height: 25px;
     border-radius: 50%;
+    margin-top: 0;
+    margin-bottom: auto;
 }
 
 .post-body {
@@ -94,5 +110,16 @@ export default {
     object-fit: cover;
     border-radius: 5px;
     margin-top: 8px;
+}
+
+.like-button {
+    background: none;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.post-like {
+    width: 25px;
+    height: 25px;
 }
 </style>
