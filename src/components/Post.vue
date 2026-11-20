@@ -1,30 +1,36 @@
 <template>
-    <article class="post">
-        <div class="post-header">
-            <span class="author">{{post.author}}</span>
-            <span class="date">{{post.createdAt.split('T')[0]}}</span>
-        </div>
+  <article class="post">
+    <div class="post-header">
+      <img src="/res/images/me.png" alt="" class="post-icon">
+      <span class="author">{{ post.author }}</span>
+      <time class="date" :datetime="post.createdAt">
+        {{ post.createdAt.split('T')[0] }}
+      </time>
+    </div>
 
-        <div class="post-content">
-            <img src="/res/images/me.png" alt="User" class="post-icon">
+    <div class="post-body">
+      <img
+        v-if="post.image"
+        :src="post.image"
+        alt="Post photo"
+        class="post-image"
+      >
+      <p>{{ post.text }}</p>
+    </div>
 
-            <div class="post-body">
-                <p>{{post.text}}</p>
+    <div class="post-actions">
+      <button
+        type="button"
+        class="like-button"
+        :aria-label="'Like post by ' + post.author"
+        @click="IncrementLike(post.id)"
+      >
+        <img src="/res/images/likeimage.png" alt="" class="post-like">
+      </button>
 
-                <img :src="post.image"
-                    alt="Photo from my post"
-                    class="post-image" v-if="post.image != null">
-            </div>
-
-            <button class="like-button" v-on:click="IncrementLike(post.id)">
-                <img src="/res/images/likeimage.png" class="post-like">
-            </button>
-
-            <div class="likes_text">
-            {{post.likes}}
-            </div>
-        </div>
-    </article>
+      <span>{{ post.likes }} {{ post.likes === 1 ? 'like' : 'likes' }}</span>
+    </div>
+  </article>
 </template>
 
 <script>
@@ -46,80 +52,91 @@ export default {
 </script>
 
 <style scoped>
-
 .post {
-    /*background-color: #d5d5d5;*/
-    background-color: rgb(236, 192, 115);
-    border-radius: 6px;
-    margin-bottom: 15px;
-    padding: 8px;
+  padding: 1rem;
+  border: 1px solid #cbd5df;
+  border-radius: 12px;
+  background: white;
+  color: #243247;
+  text-align: left;
+  overflow-wrap: anywhere;
 }
 
-/* Child selector */
-.post > .post-header {
-    text-align: right;
-    font-size: 12px;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-/* Adjacent sibling selector */
-.post-header + .post-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.post-header > .author{
-    font-weight : bold;
-    text-align : center;
-    padding : 2%;
-}
-
-/* General sibling selector */
-.post-header ~ .post-content {
-    padding-top: 2px;
-}
-
-/* Descendant selector */
-.post-content p {
-    margin: 0;
-}
-
-/* Pseudo-element selector */
-.post-content p::first-letter {
-    font-size: xx-large;
+.post-header,
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .post-icon {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-top: 0;
-    margin-bottom: auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.date {
+  margin-left: auto;
+  color: #526275;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .post-body {
-    flex: 1;
+  margin: 0.875rem 0;
 }
 
 .post-image {
-    width: 100%;
-    max-width: 350px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-top: 8px;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.post-body p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.post-image + p {
+  margin-top: 0.75rem;
+}
+
+.post-actions {
+  justify-content: space-between;
+  padding-top: 0.625rem;
+  border-top: 1px solid #e1e7ef;
+  font-size: 0.875rem;
 }
 
 .like-button {
-    background: none;
-    margin-left: auto;
-    margin-right: 0;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid #cbd5df;
+  border-radius: 8px;
+  background: #f3f6f8;
+  cursor: pointer;
+}
+
+.like-button:hover {
+  background: #e1eafa;
+}
+
+.like-button:focus-visible {
+  outline: 3px solid #356bb0;
+  outline-offset: 2px;
 }
 
 .post-like {
-    width: 25px;
-    height: 25px;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
 }
 </style>
