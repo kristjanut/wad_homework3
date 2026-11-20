@@ -1,23 +1,21 @@
 <template>
-    <footer>
-        <div class="footer_container">
-            <h3>Footer</h3>
-        </div>
-        <div class="footer_bottom">
-            <p>Copyrights belong to members of the author group</p>
-        </div>
-    </footer>
+  <footer class="site-footer">
+    <p>&copy; WAD Homework 3 authors</p>
+  </footer>
 </template>
 
 <style scoped>
-footer {
-    text-align: center;
-    background-color: #a49fc1;
-    /*padding: 10px;
-    border-radius: 5px;*/
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
+.site-footer {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #243247;
+  color: white;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 </style>

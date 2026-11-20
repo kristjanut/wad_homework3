@@ -10,25 +10,59 @@ import Header from '@/components/Header.vue'
 </template>
 
 <style>
-#app {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fa;
+  color: #243247;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(100%, 64rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1rem;
   text-align: center;
-  color: #2c3e50;
-  padding-bottom: 100px;
 }
 
 nav {
-  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: #243247;
+  color: white;
 }
 
 nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: #36506d;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  background: white;
+  color: #243247;
+}
+
+#app > :last-child {
+  margin-top: auto;
 }
 </style>
