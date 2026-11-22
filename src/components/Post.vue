@@ -261,7 +261,6 @@ button:focus-visible {
   }
 }
 
-/* Très petits téléphones (<= 359px) */
 @media (max-width: 359px) {
   .post {
     padding: 0.625rem;
