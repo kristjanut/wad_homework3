@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import { createStore } from 'vuex'
-import postsData from '@/assets/posts.json'
+import postsData from '@/assets/posts.JSON'
 
 export default createStore({
   state: {
@@ -43,6 +43,21 @@ export default createStore({
     }
   },
   actions: {
+    IncrementLikeAct(act, postId) {
+      setTimeout(function() {
+        act.commit("IncrementLike", postId)
+      }, 1000)
+    },
+    ResetLikePostAct(act, postId) {
+      setTimeout(function() {
+        act.commit("ResetLikePost", postId)
+      }, 1000)
+    },
+    ResetLikesAct(act) {
+      setTimeout(function() {
+        act.commit("ResetLikes")
+      }, 1000)
+    }
   },
   modules: {
   }

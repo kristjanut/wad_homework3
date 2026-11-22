@@ -51,11 +51,11 @@ export default {
         }
     },
     methods: {
-        IncrementLike (postId) {
-            this.$store.commit('IncrementLike', postId)
+        IncrementLike:  function(postId) {
+            this.$store.dispatch('IncrementLikeAct', postId)
     },
-      ResetLike(postId){
-        this.$store.commit('ResetLikePost', postId)
+      ResetLike: function(postId){
+        this.$store.dispatch('ResetLikePostAct', postId)
       }
 }
 

@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     ResetLikes () {
-      this.$store.commit('ResetLikes')
+      this.$store.dispatch('ResetLikesAct')
     }
   }
 }
